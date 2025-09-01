@@ -1,5 +1,6 @@
 package org.breaze;
 
+import javax.net.ssl.SSLSocketFactory;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -18,7 +19,8 @@ public class TCPClient {
     }
 
     public void connect() throws IOException {
-        this.clientSocket = new Socket(this.serverAddress, this.serverPort);
+        SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+        this.clientSocket = sslSocketFactory.createSocket(serverAddress, serverPort);
         System.out.println("Connected to server: " + this.serverAddress + ":" + this.serverPort);
         this.dataInputStream = new DataInputStream(this.clientSocket.getInputStream());
         this.dataOutputStream = new DataOutputStream(this.clientSocket.getOutputStream());

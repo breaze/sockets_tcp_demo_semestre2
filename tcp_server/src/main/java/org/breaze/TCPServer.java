@@ -1,5 +1,9 @@
 package org.breaze;
 
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,7 +18,8 @@ public class TCPServer {
 
     public void start(){
         try{
-            ServerSocket serverSocket = new ServerSocket(serverPort);
+            SSLServerSocketFactory sslSocketFactory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
+            ServerSocket serverSocket = (SSLServerSocket)sslSocketFactory.createServerSocket(serverPort);
             System.out.println("Server started on port: " + serverPort);
             while(true){
                 Socket clientSocket = serverSocket.accept();
