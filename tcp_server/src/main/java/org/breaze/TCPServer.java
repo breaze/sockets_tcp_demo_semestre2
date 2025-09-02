@@ -5,7 +5,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+/** * A simple TCP server that listens for incoming connections,
+ * processes messages, and sends responses.
+ */
 public class TCPServer {
     private int serverPort;
     public TCPServer(int serverPort){
