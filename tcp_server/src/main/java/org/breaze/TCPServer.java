@@ -16,6 +16,7 @@ public class TCPServer {
 
     public void start(){
         try{
+            // Creating a server socket to listen on the specified port
             ServerSocket serverSocket = new ServerSocket(serverPort);
             System.out.println("Server started on port: " + serverPort);
             while(true){
